@@ -23,7 +23,7 @@ int main() {
                " C-Close Account\n"
                " I-Interest\n"
                " P-Print\n"
-               " E-Exit \n");
+               " E-Exit\n");
         scanf(" %c", &option);
         switch(option){
 
