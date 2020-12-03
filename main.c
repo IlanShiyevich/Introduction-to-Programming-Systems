@@ -106,7 +106,7 @@ int main() {
                 }
                 terminateAccount(account_number);
             case 'I':
-                printf("Please enter interest rate: ");
+                printf("Please enter interest rate:");
                 double interest = 0;
                 scanf(" %lf",&interest);
                 if(interest == 0){
@@ -122,7 +122,6 @@ int main() {
             case 'E': Exit();
                 return 0;
             default: printf("Invalid transaction type \n"); break;
-
         }
     }
 }
