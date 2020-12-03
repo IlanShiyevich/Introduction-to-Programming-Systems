@@ -1,30 +1,21 @@
-AR=ar
-CC=gcc
+CC = gcc
+FLAGS = -Wall -g
+AR = ar -rcs
 
-all: progmaind progmains
+all: mains
 
-progmaind: main.o libmyMath.so
-		$(CC)  -o progmaind main.o ./libmyMath.so
-progmains: main.o libmyMath.a
-		$(CC)  -o progmains main.o ./libmyMath.a
-libmyMath.so: basicMath.o power.o
-		$(CC) -shared -o libmyMath.so basicMath.o power.o
-libmyMath.a: basicMath.o power.o
-		$(AR) -rcs libmyMath.a basicMath.o power.o
+mains: main.o libMyBank.a
+	$(CC) $(FLAGS) -o mains main.o libMyBank.a
 
+libMyBank.a: myBank.o
+	$(AR) libMyBank.a myBank.o
 
-main.o: main.c myMath.h
-		$(CC)  -c main.c
-			
-basicMath.o: basicMath.c
-		$(CC)  -c basicMath.c
+main.o: main.c myBank.h
+	$(CC) $(FLAGS) -c main.c
+myBank.o: myBank.c myBank.h
+	$(CC) $(FLAGS) -c myBank.c
 
-power.o: power.c
-		$(CC)  -c power.c
+.PHONY: all clean
 
-
-
-.PHONY: clean
-
-clean: 
-		rm -f *.o progmaind progmains *.a *.so
+clean:
+	rm -f *.o *.a mains
