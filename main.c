@@ -122,8 +122,7 @@ int main() {
             case 'E': Exit();
                 return 0;
             default: printf("Invalid transaction type \n"); break;
+
         }
     }
 }
-
-
